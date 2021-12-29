@@ -24,12 +24,17 @@ public class MainController {
         this.sensorListRepository = sensorListRepository;
     }
 
+    //TODO: please, output all sensor data on UI
     @GetMapping("json")
     public String json(Model model) {
         model.addAttribute("post", getSensors());
         return "json";
     }
 
+    //TODO: all business logic should be on the service layer
+    //TODO: In the task was said that there are some broken sensors, sensors with wrong fields.
+    // That is mean that some sensors have not valid fields (wrong email format, incorrect battery percentage, wrong sensor status value).
+    // You should handle such cases (add some validation process).
     private Iterable<Sensor> getSensors() {
         List<URL> urlList = sensorListRepository.getUrlList();
 
@@ -46,6 +51,8 @@ public class MainController {
                     for (Sensor sensor : sensors) {
                         for (Sensor storage : sensorIterable) {
                             if (sensor.getId().equals(storage.getId())) {
+                                //TODO: it is bad practice to use empty exceptions. Please, create custom exceptions with convenient exception messages.
+                                // Also, such cases should be logged
                                 throw new Exception();
                             }
                         }

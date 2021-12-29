@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+//TODO: It is not a good idea to put verbs in class names. Verbs more sufficient in method names.
 @Controller
 public class FindSensorsController {
 
@@ -24,6 +25,9 @@ public class FindSensorsController {
         return "find";
     }
 
+    //TODO: it is not necessary to name method with "Post" word. We have already know http method by annotation
+    //TODO: all business logic should be on the service layer
+    //TODO: Please follow java naming conventions. Name your local variables to match the regular expression '^[a-z][a-zA-Z0-9]*$'.
     @PostMapping("/")
     public String findPost(Model model, @RequestParam(required = false) String type, @RequestParam(required = false) String battery_percentage,
                            @RequestParam String sensor_status) {

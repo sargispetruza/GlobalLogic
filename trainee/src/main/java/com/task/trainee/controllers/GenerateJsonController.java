@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.io.FileWriter;
 import java.io.IOException;
 
+//TODO: It is not a good idea to put verbs in class names. Verbs are more applicable in method names.
 @Controller
 public class GenerateJsonController {
     // изменить на ваш полный путь для корректной записи
+    //TODO: please, use relative path instead of absolute
     private static final String URL_FOR_REPORT = "D:\\IdeaProjects\\GlobalLogic\\trainee\\src\\main\\resources\\reports\\report.json";
     private final SensorRepository sensorRepository;
     private final SensorListRepository sensorListRepository;
@@ -34,6 +36,7 @@ public class GenerateJsonController {
         return "redirect:/json";
     }
 
+    //TODO: all business logic should be on the service layer
     private void createJson() {
         long allScaners = 0;
         long brokenScaners = 0;
@@ -62,6 +65,7 @@ public class GenerateJsonController {
             e.printStackTrace();
         }
         // печатает report в консоль (для удобства)
+        //TODO: Try to use logger instead of System.out
         System.out.println(jsonObject.toJSONString());
     }
 }

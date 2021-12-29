@@ -5,6 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(schema = "json")
 public class Sensor {
+
+    //TODO: sensors already have unique id. Why do we need pk?
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long pk;
@@ -14,6 +16,7 @@ public class Sensor {
     private String name;
     private String description;
     private String type;
+    //TODO: Please follow java naming conventions. Name your local variables to match the regular expression '^[a-z][a-zA-Z0-9]*$'.
     private Long battery_percentage;
 
     @OneToOne(cascade = CascadeType.ALL)

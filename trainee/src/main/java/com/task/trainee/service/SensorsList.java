@@ -10,6 +10,9 @@ import java.util.List;
 
 @Service
 public class SensorsList implements SensorListRepository {
+
+    //TODO: It is really not good idea to store a set of links in class. We may have hundreds of such files.
+    // It is necessary to read all files from the folder to the list and then validate it.
     private List<URL> urlList = new ArrayList<>(Arrays.asList(
             this.getClass().getClassLoader().getResource("sensors/broken_sensor_11111.json"),
             this.getClass().getClassLoader().getResource("sensors/door_sensor_0a4b2386.json"),
@@ -18,9 +21,9 @@ public class SensorsList implements SensorListRepository {
             this.getClass().getClassLoader().getResource("sensors/lite_sensor_1b5d3256.json"),
             this.getClass().getClassLoader().getResource("sensors/lite_sensor_3b6o4254.json"),
             this.getClass().getClassLoader().getResource("sensors/lite_sensor_5y6o4254.json"),
-            this.getClass().getClassLoader().getResource("sensors/window_sensor_8j9f3259.json"),
-            this.getClass().getClassLoader().getResource("sensors/window_sensor_with_wrong_fields_2c5d3259.json")
-    )
+            this.getClass().getClassLoader().getResource("sensors/window_sensor_with_wrong_fields_8j9f3259.json"),
+            this.getClass().getClassLoader().getResource("sensors/window_sensor_2c5d3259.json")
+        )
     );
 
     @Override
